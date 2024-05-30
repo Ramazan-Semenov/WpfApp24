@@ -17,14 +17,14 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="0,0,1,0" BorderBrush="Black"  MinWidth="30"   >
+                        <Border BorderThickness="1,1,0,1" BorderBrush="Black"  MinWidth="30"   >
                             <Border.Width>
                                 <MultiBinding Converter="{StaticResource SetWidthConvert}" >
                                     <Binding  RelativeSource="{RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType=ItemsControl}" Path="ActualWidth"/>
                                     <Binding  RelativeSource="{RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType=ItemsControl}" Path="ItemsSource.Count"/>
                                 </MultiBinding>
                             </Border.Width>
-                            <TextBlock   HorizontalAlignment="Center" Text="{Binding  }"/>
+                            <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding  .}"/>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -68,7 +68,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <DataGrid x:Name="DG" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid x:Name="DG" SelectionUnit="Cell" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header= "Course Name"    Binding="{Binding  SchoolName}" Width="150"/>
             </DataGrid.Columns>

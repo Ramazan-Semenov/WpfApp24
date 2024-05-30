@@ -83,6 +83,19 @@ namespace WpfApp24
             return null;
 
         }
+        protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
+        {
+            cell.BorderThickness = new Thickness(0);
+            var d = cell.Column as DataGridTemplateColumn;
+            var p = d.CellTemplate;
+            if (ItemSource != null)
+            {
+                var ds = p.LoadContent() as ItemsControl;
+                ds.SetValue(ItemsControl.ItemsSourceProperty, (ItemSource as List<DDL>)[0].TestType);
+                return ds;
+            }
+            return null;
+        }
         public DataTemplate MakeDataTemplate(string myName)
         {
             //A XAML is dynamically generated in memory, describing a DataTemplate
